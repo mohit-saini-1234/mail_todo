@@ -30,7 +30,7 @@ from app.config import app
 
 app.config['MAIL_SERVER']= MAIL_SERVER
 app.config['MAIL_PORT'] = MAIL_PORT
-app.config['MAIL_USERNAME'] = sender_mail
+app.config['MAIL_USERNAME'] = MAIL_USERMAIL
 app.config['MAIL_PASSWORD'] = MAIL_PASSWORD
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
@@ -99,7 +99,7 @@ def login():
    if not password:
       return jsonify(msg="Missing password parameter"), 400
 
-   User_A = mongo.db.Users.find_one({"username": is_user})
+   User_A = mongo.db.Users.find_one({"username": log_user})
    if User_A is None:
       return jsonify(msg="user doesn't exists"), 400
    print("check", User_A)
